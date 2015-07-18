@@ -3,7 +3,7 @@
  * Plugin Name: WP Custom Buttons 
  * Plugin URI: 
  * Description: Allows you to create your own call to action buttons for your pages.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Tricks Of IT
  * Author URI: http://www.tricksofit.com/
  */
@@ -79,6 +79,20 @@
 				</tr>
 				
 				<tr valign="top">
+					<th scope="row"><?php _e( 'Align Button', $this->domain ); ?></th>
+					<td>
+						<fieldset>
+							<label for="wpcb-align_button">
+							<select id="wpcb-align_button" name="wpcb_settings[align_button]">
+								<option <?php echo (isset($wpcb_settings['align_button']) && $wpcb_settings['align_button'] == 'center')?'selected="selected"':'' ?> value="center">Center</option>
+								<option <?php echo (isset($wpcb_settings['align_button']) && $wpcb_settings['align_button'] == 'left')?'selected="selected"':'' ?> value="left">Left</option>
+								<option <?php echo (isset($wpcb_settings['align_button']) && $wpcb_settings['align_button'] == 'right')?'selected="selected"':'' ?> value="right">Right</option>
+							</select> <span style="color:#aaa;"><?php _e( 'Align your button', $this->domain ); ?></span></label>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top">
 					<th scope="row"><?php _e( 'Button Class', $this->domain ); ?></th>
 					<td>
 						<fieldset>
@@ -138,7 +152,7 @@
 				echo "<p>Copy the below shortcode and place into your WordPress site.";
 				echo "</p>";
 				echo "<textarea cols='60' rows='3' onclick='this.select();this.focus();'>";
-				echo '[wpcbuttons button_txt="'.$wpcb_settings['button_txt'].'" target_url="'.$wpcb_settings['target_url'].'" open_new_window="'.$wpcb_settings['open_new_window'].'" button_class="'.$wpcb_settings['button_class'].'" background_color="'.$wpcb_settings['background_color'].'" font="'.$wpcb_settings['font'].'" color="'.$wpcb_settings['color'].'" font_size="'.$wpcb_settings['font_size'].'"  ]';
+				echo '[wpcbuttons button_txt="'.$wpcb_settings['button_txt'].'" target_url="'.$wpcb_settings['target_url'].'" open_new_window="'.$wpcb_settings['open_new_window'].'" align_button="'.$wpcb_settings['align_button'].'" button_class="'.$wpcb_settings['button_class'].'" background_color="'.$wpcb_settings['background_color'].'" font="'.$wpcb_settings['font'].'" color="'.$wpcb_settings['color'].'" font_size="'.$wpcb_settings['font_size'].'"  ]';
 				echo "</textarea>";
 				
 				echo "</div>";
@@ -157,6 +171,7 @@
 		$button_txt = $atts['button_txt'];
 		$target_url = ($atts['target_url'])?$atts['target_url']:'#';
 		$open_new_window = ($atts['open_new_window'])?'target="_blank"':'';
+		$align_button = ($atts['align_button'])?'text-align:'.$atts['align_button'].';':'';
 		$button_class = $atts['button_class'];
 		$background_color = ($atts['background_color'])?'background:'.$atts['background_color'].';':'';
 		$font = ($atts['font'])?'font-family:'.$atts['font'].';':'';
@@ -165,7 +180,7 @@
 		
 		
 		$content = '<div style="clear: both;">';
-		$content .= '<div style="'.$font_size.'padding:8px 0;'.$font.'text-align: center;">';
+		$content .= '<div style="'.$font_size.'padding:8px 0;'.$font.$align_button.'">';
 		$content .= '<a href="'.$target_url.'" '.$open_new_window.' style="'.$font.$font_size.$background_color.' padding: 8px 15px;'.$color.'text-decoration: none; cursor: pointer;" class="'.$button_class.'">'.$button_txt.'</a>';
 		$content .= '</div>';
 		$content .= '</div>';

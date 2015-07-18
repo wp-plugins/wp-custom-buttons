@@ -3,7 +3,7 @@ Contributors: tricksofit
 Tags: button, custom button, call to action, button creater
 Requires at least: 3.6
 Tested up to: 4.2.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,12 +36,18 @@ Go to Wordpress settings -> WP Custom Buttons and enter the button details accor
 
 == Changelog ==
 
+= 1.0.1 =
+* Added Button Align option.
+
 = 1.0.0 =
 * Released on 27/06/2015
 * Initial release of WP Custom Buttons.
 
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Added Button Align option.
 
 = 1.0.0 =
 Initial release of WP Custom Buttons.
